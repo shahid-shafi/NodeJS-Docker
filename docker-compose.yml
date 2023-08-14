@@ -1,8 +1,19 @@
-version: "3"
+version: '3'
 services:
   ecommerce-app:
     build: .
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - PORT=3000
+
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=testUserName
+      - MONGO_INITDB_ROOT_PASSWORD=testpassword
+    volumes:
+      - mongo-db:/data/db
+
+volumes:
+  mongo-db:
